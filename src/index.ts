@@ -1,10 +1,11 @@
 import express from "express";
 import { pool } from "./utils/db.js";
 import {errorHandler} from './middleware/errorHandler.js';
-import producerRoute from "./routes/producers.js";
+import producerRoute from "./routes/producers.routes.js";
 const app = express();
 const PORT = 3000;
 
+app.set('trust proxy',true);
 app.use(express.json());
 
 app.get("/", async (_req, res) => {
