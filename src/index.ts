@@ -1,11 +1,12 @@
 import express from "express";
 import { pool } from "./utils/db.js";
-import {errorHandler} from './middleware/errorHandler.js';
-import producerRoute from "./routes/producers.routes.js";
+import { errorHandler } from "./middleware/errorHandler.js";
+import producerRoute from "./routes/producers.route.js";
+import retailProductRoute from "./routes/retailProduct.route.js";
 const app = express();
 const PORT = 3000;
 
-app.set('trust proxy',true);
+app.set("trust proxy", true);
 app.use(express.json());
 
 app.get("/", async (_req, res) => {
@@ -18,8 +19,8 @@ app.get("/", async (_req, res) => {
 });
 
 // --------------- routes -----------------------------
-app.use('/producer',producerRoute);
-
+app.use("/producer", producerRoute);
+app.use("/retailProduct", retailProductRoute);
 
 app.use(errorHandler);
 app.listen(PORT, () => {
