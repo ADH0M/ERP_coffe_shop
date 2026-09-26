@@ -4,6 +4,7 @@ import { errorHandler } from "./middleware/errorHandler.js";
 import producerRoute from "./routes/producers.route.js";
 import retailProductRoute from "./routes/retailProduct.route.js";
 import beverages from "./routes/beverages.route.js";
+import orders from "./routes/order.route.js";
 
 const app = express();
 const PORT = 3000;
@@ -24,6 +25,7 @@ app.get("/", async (_req, res) => {
 app.use("/producer", producerRoute);
 app.use("/retailProduct", retailProductRoute);
 app.use("/beverages", beverages);
+app.use("/orders", orders);
 
 app.use(errorHandler);
 app.listen(PORT, () => {
