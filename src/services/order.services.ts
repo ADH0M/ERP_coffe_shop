@@ -23,11 +23,11 @@ const getOrderService = async () => {
 const createOrderService = async (data: CreateOrderSchema) => {
   const order = await pool.query(
     `
-        INSERT INTO hossam.order 
+        INSERT INTO hossam.orders 
         (customer_name, address,total_price,status)
         VALUES ($1,$2,$3,$4)
         RETURNING 
-        name ,customer_name, address,total_price,status;
+        id ,customer_name, address,total_price,status;
         `,
     [
       data.customer_name ?? null,

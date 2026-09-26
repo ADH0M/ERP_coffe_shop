@@ -1,6 +1,9 @@
 import { z } from "zod";
 
-const orderIdSchema = z.coerce.number().positive();
+const orderIdSchema = z.object({
+  id:z.coerce.number().positive(),
+});
+
 const createOrderSchema = z.object({
   customer_name: z.string().min(2).max(100).optional(),
   address: z.string().min(6).max(200),
