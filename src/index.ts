@@ -15,9 +15,8 @@ app.use(express.json());
 
 app.get("/", async (_req, res) => {
   const result = await pool.query("SELECT * from hossam.orders");
-  console.log(result);
 
-  res.json({
+  res.status(200).json({
     message: result.rows,
   });
 });
